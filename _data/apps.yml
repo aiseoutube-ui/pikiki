@@ -1,0 +1,14 @@
+
+items:
+  - name: "CusiCalc"
+    icon: "🍳"
+    description: "Calculadora de desperdicio cero basada en visión artificial."
+    tags: ["Vision AI", "React Native"]
+  - name: "GastroFlow"
+    icon: "📈"
+    description: "ERP para micro-cocinas con integración de APIs de terceros."
+    tags: ["Jekyll", "Stripe API"]
+  - name: "ChefPrompt"
+    icon: "🤖"
+    description: "Generador de maridajes mediante LLMs locales."
+    tags: ["Python", "TensorFlow"]

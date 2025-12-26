@@ -1,0 +1,32 @@
+
+title: "CusiCusa | Cooking & Tech"
+email: info@cusicusa.com
+description: >-
+  Plataforma de vanguardia donde la gastronomía creativa se encuentra con el desarrollo de software. 
+  Recetas algorítmicas, apps de cocina y reviews tecnológicas.
+baseurl: "" 
+url: "https://cusicusa.com"
+
+# Redes Sociales
+twitter_username: cusicusa
+github_username: cusicusa
+
+# Configuración de Build
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
+
+# Defaults para Front Matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"

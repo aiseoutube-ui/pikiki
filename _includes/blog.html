@@ -1,0 +1,56 @@
+
+<section id="blog" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Blog de Comidas</h2>
+                <p class="text-slate-500 text-lg">Recetas diseñadas con precisión de código.</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mt-8 md:mt-0">
+                <button data-filter="all" class="filter-btn bg-orange-500 text-white px-6 py-2 rounded-full font-bold transition-all border border-orange-500">Todos</button>
+                {% assign tags = "" | split: "," %}
+                {% for post in site.posts %}
+                  {% for tag in post.tags %}
+                    {% unless tags contains tag %}
+                      {% capture tags %}{{ tags | join: "," }},{{ tag }}{% endcapture %}
+                      {% assign tags = tags | split: "," %}
+                    {% endunless %}
+                  {% endfor %}
+                {% endfor %}
+                {% for tag in tags %}
+                  {% if tag != "" %}
+                  <button data-filter="{{ tag | slugify }}" class="filter-btn bg-transparent text-slate-600 px-6 py-2 rounded-full font-bold transition-all border border-slate-200 hover:border-orange-500 hover:text-orange-500">{{ tag }}</button>
+                  {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {% for post in site.posts %}
+            <article class="post-card group bg-slate-50 rounded-[2rem] overflow-hidden transition-all hover:shadow-2xl border border-slate-100" 
+                     data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}"
+                     data-gsap="fade-in">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ post.image | default: 'https://picsum.photos/seed/recipe/800/600' }}" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        {% for tag in post.tags %}
+                        <span class="bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-slate-900">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="text-orange-500 text-sm font-bold mb-2 uppercase">{{ post.cook_time }} • {{ post.date | date: "%B %d" }}</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-orange-500 transition-colors">{{ post.title }}</h3>
+                    <p class="text-slate-600 mb-8 line-clamp-3">{{ post.excerpt | strip_html }}</p>
+                    <a href="{{ post.url }}" class="flex items-center gap-2 font-black text-slate-900 uppercase text-xs tracking-[0.2em] group-hover:text-orange-500 transition-all">
+                        Ver Proyecto 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

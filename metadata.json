@@ -1,0 +1,7 @@
+{
+  "name": "CusiCusa - Cooking & Tech Hub",
+  "description": "A high-performance cooking and technology platform featuring GSAP-powered creative coding animations, advanced SEO/AEO/GEO optimization, and a seamless content management experience.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
